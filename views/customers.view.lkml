@@ -43,10 +43,11 @@ view: customers {
   measure: count_percent_of_total {
     label: "Count (Percent of total)"
     type: percent_of_total
-    sql: ${customer_id} ;;
+    sql: ${count} ;;
+    drill_fields: [detail*]
     }
 
   set: detail {
-    fields: [customer_id, customer_unique_id]
+    fields: [customer_id, customer_unique_id, customer_state, customer_city]
   }
 }
