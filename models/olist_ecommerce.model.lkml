@@ -10,7 +10,7 @@ datagroup: olist_ecommerce_default_datagroup {
 
 persist_with: olist_ecommerce_default_datagroup
 
-############ Base Explores #############
+############ Customers and Purchase Behaviors Explore #############
 
 explore: customers_purchase_behaviors {
   label: "(1) Customers and Purchase Behaviors"
@@ -33,5 +33,38 @@ explore: customers_purchase_behaviors {
     relationship: one_to_many
     sql_on: ${orders.order_id} = ${order_payments.order_id} ;;
   }
+
+}
+
+############ Orders and Products Sold Explore #############
+
+explore: orders_products_sold {
+  label: "(2) Orders and Products Sold"
+  view_name: orders
+
+  join: order_items {
+    view_label: "Order Items"
+    relationship: one_to_many
+    sql_on: ${orders.order_id} = ${order_items.order_id} ;;
+  }
+
+  join: order_payments {
+    view_label: "Order Payments"
+    relationship: one_to_many
+    sql_on: ${orders.order_id} = ${order_payments.order_id} ;;
+  }
+
+  join: products {
+    view_label: "Products"
+    relationship: many_to_one
+    sql_on: ${order_items.product_id} = ${products.product_id} ;;
+  }
+
+  join: product_category_name_translation {
+    view_label: "Product Translation"
+    relationship: many_to_one
+    sql_on: ${products.product_category_name} = ${product_category_name_translation.product_category_name} ;;
+  }
+
 
 }

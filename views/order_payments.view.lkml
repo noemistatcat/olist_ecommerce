@@ -32,4 +32,16 @@ view: order_payments {
     type: count
     drill_fields: [orders.order_id]
   }
+
+  measure: sum {
+    type: sum
+    drill_fields: [orders.order_id]
+  }
+
+  measure: count_percent_of_total {
+    label: "Count (Percent of total)"
+    type: percent_of_total
+    sql: ${count} ;;
+    drill_fields: [orders.order_id]
+  }
 }

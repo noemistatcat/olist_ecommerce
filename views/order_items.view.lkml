@@ -55,4 +55,17 @@ view: order_items {
     type: count
     drill_fields: [order_item_id, products.product_category_name, products.product_id, orders.order_id]
   }
+
+  measure: sum {
+    type: sum
+    drill_fields: [order_item_id, products.product_category_name, products.product_id, orders.order_id]
+  }
+
+  measure: count_percent_of_total {
+    label: "Count (Percent of total)"
+    type: percent_of_total
+    sql: ${count} ;;
+    drill_fields: [order_item_id, products.product_category_name, products.product_id, orders.order_id]
+    }
+
 }
