@@ -31,20 +31,20 @@ view: customers {
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: [customer_id]
   }
 
-  measure: count_distinct {
+  measure: count_distinct_customer_id {
     label: "Count (Distinct)"
     type: count_distinct
-    drill_fields: [detail*]
-  }
+    sql: ${customer_id} ;;
+    }
 
   measure: count_percent_of_total {
     label: "Count (Percent of total)"
     type: percent_of_total
-    drill_fields: [detail*]
-  }
+    sql: ${customer_id} ;;
+    }
 
   set: detail {
     fields: [customer_id, customer_unique_id]
