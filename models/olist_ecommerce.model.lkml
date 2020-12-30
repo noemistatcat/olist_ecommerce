@@ -1,4 +1,5 @@
 connection: "olist"
+label: "Olist eCommerce Data"
 
 datagroup: olist_ecommerce_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
