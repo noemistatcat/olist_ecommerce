@@ -2,15 +2,13 @@ view: repeat_purchase {
   view_label: "Dimensions and Measures for repeat purchase behaviors"
   derived_table: {
     sql: SELECT
-    *,
-    COUNT(*) as lifetime_orders,
-    MAX(order_purchase_timestamp) as first_purchase_date,
-    MIN(order_purchase_timestamp) as last_purchase_date
-    FROM (SELECT * FROM
-        (SELECT order_id, order_purchase_timestamp, customer_id FROM orders) a
-        LEFT JOIN
-        (SELECT order_id, price FROM order_items) b
-        ON a.order_id = b.order_id)
+    order_items.customer_id,
+    order_items.price,
+    COUNT(*) AS lifetime_orders,
+    MIN(orders.order_purchase_timestamp) AS first_purchase_date,
+    MAX(orders.order_purchase_timestamp) AS last_purchase_date,
+    LEFT JOIN orders order_items
+        ON orders.order_id = order_items.order_id
     GROUP BY customer_id;;
   }
 
