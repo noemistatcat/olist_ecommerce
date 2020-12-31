@@ -3,7 +3,7 @@ view: test_view {
   derived_table: {
     sql: SELECT
         *
-      FROM orders
+      FROM "DATASETS"."ORDERS"
       ;;
   }
 
