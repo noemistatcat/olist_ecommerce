@@ -78,5 +78,10 @@ explore: orders_products_sold {
     sql_on: ${products.product_category_name} = ${product_category_name_translation.product_category_name} ;;
   }
 
+  join: order_facts {
+    view_label: "Order Facts"
+    relationship: one_to_one
+    sql_on: ${orders.order_id} = ${order_facts.order_id} ;;
+  }
 
 }
