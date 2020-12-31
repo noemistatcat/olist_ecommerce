@@ -7,7 +7,7 @@ view: repeat_purchase {
     MAX(order_purchase_timestamp) as first_purchase_date,
     MIN(order_purchase_timestamp) as last_purchase_date,
     FROM (SELECT * FROM
-        (SELECT order_id, order_purchase_timestamp, user_id  FROM orders) a
+        (SELECT order_id, order_purchase_timestamp, customer_id  FROM orders) a
         LEFT JOIN
         (SELECT order_id, price FROM order_items) b)
         ON a.order_id = b.order_id
