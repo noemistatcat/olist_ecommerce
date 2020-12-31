@@ -12,7 +12,7 @@ view: repeat_purchase {
     MAX("DATASETS"."ORDERS".order_purchase_timestamp) AS last_purchase_date,
     SUM("DATASETS"."ORDER_ITEMS".price) AS price
     FROM "DATASETS"."ORDERS"
-    LEFT JOIN "DATASETS"."ORDERS" "DATASETS"."ORDER_ITEMS"
+    LEFT JOIN "DATASETS"."ORDER_ITEMS"
         ON "DATASETS"."ORDERS".order_id = "DATASETS"."ORDER_ITEMS".order_id
     GROUP BY customer_id;;
 }
