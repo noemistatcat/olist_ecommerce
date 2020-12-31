@@ -40,6 +40,12 @@ explore: customers_purchase_behaviors {
     sql_on: ${orders.order_id} = ${order_payments.order_id} ;;
   }
 
+  join: test_view {
+    view_label: "Test View"
+    relationship: one_to_one
+    sql_on: ${orders.order_id} = ${test_view.order_id} ;;
+  }
+
 }
 
 ############ Orders and Products Sold Explore #############
