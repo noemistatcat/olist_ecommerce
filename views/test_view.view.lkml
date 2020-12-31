@@ -2,8 +2,8 @@ view: test_view {
   # Or, you could make this view a derived table, like this:
   derived_table: {
     sql: SELECT
-        order_id
-      FROM "DATASETS"."ORDERS"
+        orders.order_id
+      FROM "DATASETS"."ORDERS" as orders
       ;;
   }
 
