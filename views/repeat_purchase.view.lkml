@@ -11,8 +11,8 @@ view: repeat_purchase {
     MIN(orders.order_purchase_timestamp) AS first_purchase_date,
     MAX(orders.order_purchase_timestamp) AS last_purchase_date,
     SUM(order_items.price) AS price
-    FROM orders
-    LEFT JOIN orders order_items
+    FROM "DATASETS"."ORDERS" as orders
+    LEFT JOIN orders "DATASETS"."ORDER_ITEMS" as order_items
         ON orders.order_id = order_items.order_id
     GROUP BY customer_id;;
   }
