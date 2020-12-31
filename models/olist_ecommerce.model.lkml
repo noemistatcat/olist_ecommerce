@@ -16,6 +16,12 @@ explore: customers_purchase_behaviors {
   label: "(1) Customers and Purchase Behaviors"
   view_name: customers
 
+  join: repeat_purchase {
+    view_label: "Repeat Purchase"
+    relationship: one_to_one
+    sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
+  }
+
   join: orders {
     view_label: "Orders"
     relationship: one_to_many
