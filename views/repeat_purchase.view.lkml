@@ -6,14 +6,14 @@ view: repeat_purchase {
   view_label: "Dimensions and Measures for repeat purchase behaviors"
   derived_table: {
     sql: SELECT
-    "DATASETS"."ORDERS".customer_id,
+    orders.customer_id,
     COUNT(*) AS lifetime_orders,
-    MIN("DATASETS"."ORDERS".order_purchase_timestamp) AS first_purchase_date,
-    MAX("DATASETS"."ORDERS".order_purchase_timestamp) AS last_purchase_date,
-    SUM("DATASETS"."ORDER_ITEMS".price) AS price
-    FROM "DATASETS"."ORDERS"
-    LEFT JOIN "DATASETS"."ORDER_ITEMS"
-        ON "DATASETS"."ORDERS".order_id = "DATASETS"."ORDER_ITEMS".order_id
+    MIN(orders.order_purchase_timestamp) AS first_purchase_date,
+    MAX(orders.order_purchase_timestamp) AS last_purchase_date,
+    SUM(orders.price) AS price
+    FROM "DATASETS"."ORDERS" AS orders
+    LEFT JOIN "DATASETS"."ORDER_ITEMS" AS order_items
+        ON orders.order_id = order_items.order_id
     GROUP BY customer_id;;
 }
 
