@@ -15,7 +15,7 @@ view: repeat_purchase {
     LEFT JOIN orders "DATASETS"."ORDER_ITEMS" as order_items
         ON orders.order_id = order_items.order_id
     GROUP BY customer_id;;
-  }
+}
 
   # Define your dimensions and measures here, like this:
   dimension: customer_id {
