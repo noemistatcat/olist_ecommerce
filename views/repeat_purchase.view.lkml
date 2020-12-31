@@ -10,7 +10,7 @@ view: repeat_purchase {
     COUNT(*) AS lifetime_orders,
     MIN(orders.order_purchase_timestamp) AS first_purchase_date,
     MAX(orders.order_purchase_timestamp) AS last_purchase_date,
-    SUM(orders.price) AS price
+    SUM(order_items.price) AS price
     FROM "DATASETS"."ORDERS" AS orders
     LEFT JOIN "DATASETS"."ORDER_ITEMS" AS order_items
         ON orders.order_id = order_items.order_id
