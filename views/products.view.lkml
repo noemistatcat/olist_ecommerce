@@ -5,57 +5,62 @@ view: products {
   drill_fields: [product_id]
 
   dimension: product_id {
+    description: "Unique product identifier"
     primary_key: yes
     type: string
     sql: ${TABLE}."PRODUCT_ID" ;;
   }
 
-  dimension: prod_desc_len {
-    type: number
-    sql: ${TABLE}."PROD_DESC_LEN" ;;
-  }
-
   dimension: product_category_name {
+    description: "Root category of product, in Portuguese."
     type: string
     sql: ${TABLE}."PRODUCT_CATEGORY_NAME" ;;
   }
 
   dimension: product_description_length {
+    description: "Number of characters extracted from the product name."
     type: number
     sql: ${TABLE}."PRODUCT_DESCRIPTION_LENGTH" ;;
   }
 
   dimension: product_height_cm {
+    description: "Product height measured in centimeters."
     type: number
     sql: ${TABLE}."PRODUCT_HEIGHT_CM" ;;
   }
 
   dimension: product_length_cm {
+    description: "Product length measured in centimeters."
     type: number
     sql: ${TABLE}."PRODUCT_LENGTH_CM" ;;
   }
 
   dimension: product_name_length {
+    description: "Number of characters extracted from the product name."
     type: number
     sql: ${TABLE}."PRODUCT_NAME_LENGTH" ;;
   }
 
   dimension: product_photos_qty {
+    description: "Number of product published photos"
     type: number
     sql: ${TABLE}."PRODUCT_PHOTOS_QTY" ;;
   }
 
   dimension: product_weight_g {
+    description: "Product weight measured in grams."
     type: number
     sql: ${TABLE}."PRODUCT_WEIGHT_G" ;;
   }
 
   dimension: product_width_cm {
+    description: "Product width measured in centimeters."
     type: number
     sql: ${TABLE}."PRODUCT_WIDTH_CM" ;;
   }
 
   measure: count {
+    label: "Count"
     type: count
     drill_fields: [product_id, product_category_name, order_items.count]
   }

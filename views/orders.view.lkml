@@ -4,22 +4,20 @@ view: orders {
   drill_fields: [order_id]
 
   dimension: order_id {
+    description: "Unique identifier of the order"
     primary_key: yes
     type: string
     sql: ${TABLE}."ORDER_ID" ;;
   }
 
   dimension: customer_id {
+    description: "Key to the customer dataset. Each order has a unique customer_id."
     type: string
     sql: ${TABLE}."CUSTOMER_ID" ;;
   }
 
-  dimension: delivery_status {
-    type: yesno
-    sql: ${TABLE}."DELIVERY_STATUS" ;;
-  }
-
-  dimension_group: order_approved {
+  dimension_group: order_approved_at {
+    description: "Shows the payment approval timestamp."
     type: time
     timeframes: [
       raw,
@@ -34,6 +32,7 @@ view: orders {
   }
 
   dimension_group: order_delivered_carrier {
+    description: "Shows the order posting timestamp. When it was handled to the logistic partner."
     type: time
     timeframes: [
       raw,
@@ -48,6 +47,7 @@ view: orders {
   }
 
   dimension_group: order_delivered_customer {
+    description: "Shows the actual order delivery date to the customer."
     type: time
     timeframes: [
       raw,
@@ -62,6 +62,7 @@ view: orders {
   }
 
   dimension_group: order_estimated_delivery {
+    description: "Shows the estimated delivery date that was informed to customer at the purchase moment."
     type: time
     timeframes: [
       raw,
@@ -76,6 +77,7 @@ view: orders {
   }
 
   dimension_group: order_purchase_timestamp {
+    description: "Shows the purchase timestamp."
     type: time
     timeframes: [
       raw,
@@ -90,11 +92,13 @@ view: orders {
   }
 
   dimension: order_status {
+    description: "Reference to the order status (delivered, shipped, etc)."
     type: string
     sql: ${TABLE}."ORDER_STATUS" ;;
   }
 
   measure: count {
+    label: "Count"
     type: count
     drill_fields: [order_id, order_items.count, order_payments.count]
   }

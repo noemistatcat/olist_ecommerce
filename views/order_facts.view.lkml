@@ -13,6 +13,7 @@ view: order_facts {
     }
 
   dimension: order_id {
+    description: "Unique identifier of the order"
     type: number
     hidden: yes
     primary_key: yes
@@ -20,27 +21,30 @@ view: order_facts {
   }
 
   measure: avg_item_per_order {
-    description: "Use this for getting the average items per order"
+    label: "Average Items per Order"
+    description: "Average number of items bought per transaction"
     type: average
     sql: ${TABLE}.order_item_count ;;
   }
 
   measure: total_order_price {
-    description: "Use this for getting the total order price"
-    type: average
+    label: "Total Price"
+    description: "Total order price"
+    type: sum
     sql: ${TABLE}.order_item_count ;;
   }
 
   measure: total_freight_value {
-    description: "Use this for getting the total freight value"
+    label: "Total Freight Value"
+    description: "Total freight value"
     type: sum
     sql: ${TABLE}.freight_value ;;
   }
 
   measure: total_order_count {
-    description: "Use this for getting the total freight value"
+    label: "Order Count"
+    description: "Total order count"
     type: count_distinct
     sql: ${TABLE}.order_id ;;
   }
-
 }

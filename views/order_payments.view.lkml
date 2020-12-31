@@ -4,37 +4,44 @@ view: order_payments {
     ;;
 
   dimension: order_id {
+    description: "Unique identifier of the order"
     type: string
     # hidden: yes
     sql: ${TABLE}."ORDER_ID" ;;
   }
 
   dimension: payment_installments {
+    description: "Number of installments chosen by the customer."
     type: number
     sql: ${TABLE}."PAYMENT_INSTALLMENTS" ;;
   }
 
   dimension: payment_sequential {
+    description: "A customer may pay an order with more than one payment method. If he does so, a sequence will be created to accommodate all payments."
     type: number
     sql: ${TABLE}."PAYMENT_SEQUENTIAL" ;;
   }
 
   dimension: payment_type {
+    description: "Method of payment chosen by the customer."
     type: string
     sql: ${TABLE}."PAYMENT_TYPE" ;;
   }
 
   dimension: payment_value {
+    description: "Transaction value."
     type: number
     sql: ${TABLE}."PAYMENT_VALUE" ;;
   }
 
   measure: count {
+    label: "Count"
     type: count
     drill_fields: [orders.order_id]
   }
 
   measure: sum {
+    label: "Sum"
     type: sum
     drill_fields: [orders.order_id]
   }
