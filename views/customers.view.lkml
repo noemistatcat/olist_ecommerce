@@ -1,4 +1,5 @@
 view: customers {
+  view_label: "Customer information and location"
   sql_table_name: "DATASETS"."CUSTOMERS"
     ;;
   drill_fields: [customer_id]

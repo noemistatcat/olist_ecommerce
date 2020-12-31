@@ -1,4 +1,5 @@
 view: product_category_name_translation {
+  view_label: "Contains the English translations of product categories"
   sql_table_name: "DATASETS"."PRODUCT_CATEGORY_NAME_TRANSLATION"
     ;;
 

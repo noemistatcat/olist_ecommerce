@@ -1,4 +1,5 @@
 view: products {
+  view_label: "Contains product information"
   sql_table_name: "DATASETS"."PRODUCTS"
     ;;
   drill_fields: [product_id]

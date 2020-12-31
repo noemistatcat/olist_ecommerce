@@ -1,4 +1,5 @@
 view: order_payments {
+  view_label: "Order payment data"
   sql_table_name: "DATASETS"."ORDER_PAYMENTS"
     ;;
 

@@ -1,4 +1,5 @@
 view: orders {
+  view_label: "Main order data"
   sql_table_name: "DATASETS"."ORDERS";;
   drill_fields: [order_id]
 
