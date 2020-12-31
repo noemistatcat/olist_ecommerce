@@ -9,9 +9,9 @@ view: repeat_purchase {
     FROM (SELECT * FROM
         (SELECT order_id, order_purchase_timestamp, customer_id FROM orders) a
         LEFT JOIN
-        (SELECT order_id, price FROM order_items) b)
-        ON a.order_id = b.order_id
-        GROUP BY customer_id;;
+        (SELECT order_id, price FROM order_items) b
+        ON a.order_id = b.order_id)
+    GROUP BY customer_id;;
   }
 
   # Define your dimensions and measures here, like this:
