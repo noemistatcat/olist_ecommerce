@@ -1,4 +1,5 @@
-include: "/views/*.view" # include all the views
+include: "/views/orders.view"
+include: "/views/order_items.view"
 
 view: repeat_purchase {
   view_label: "Dimensions and Measures for repeat purchase behaviors"
