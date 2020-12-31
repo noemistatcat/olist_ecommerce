@@ -9,7 +9,7 @@ view: order_facts {
             FROM "DATASETS"."ORDERS" AS orders
             LEFT JOIN "DATASETS"."ORDER_ITEMS" AS order_items
                 ON orders.order_id = order_items.order_id
-            GROUP BY order_id;;
+            GROUP BY orders.order_id;;
     }
 
   dimension: order_id {
