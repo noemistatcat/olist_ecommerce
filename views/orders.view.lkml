@@ -1,6 +1,5 @@
 view: orders {
-  sql_table_name: "DATASETS"."ORDERS"
-    ;;
+  sql_table_name: "DATASETS"."ORDERS";;
   drill_fields: [order_id]
 
   dimension: order_id {
