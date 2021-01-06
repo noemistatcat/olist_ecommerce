@@ -15,6 +15,7 @@ view: order_items {
     description: "Item freight value item (if an order has more than one item the freight value is splitted between items)"
     type: number
     sql: ${TABLE}."FREIGHT_VALUE" ;;
+    value_format: "$#.00;($#.00)"
   }
 
   dimension: order_id {
@@ -27,6 +28,7 @@ view: order_items {
     description: "Item price"
     type: number
     sql: ${TABLE}."PRICE" ;;
+    value_format: "$#.00;($#.00)"
   }
 
   dimension: product_id {

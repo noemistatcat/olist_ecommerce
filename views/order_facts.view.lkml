@@ -32,6 +32,7 @@ view: order_facts {
     description: "Total order price"
     type: sum
     sql: ${TABLE}.order_item_count ;;
+    value_format: "$#.00;($#.00)"
   }
 
   measure: total_freight_value {
@@ -39,6 +40,7 @@ view: order_facts {
     description: "Total freight value"
     type: sum
     sql: ${TABLE}.freight_value ;;
+    value_format: "$#.00;($#.00)"
   }
 
   measure: total_order_count {

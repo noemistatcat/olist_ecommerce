@@ -32,6 +32,7 @@ view: order_payments {
     description: "Transaction value."
     type: number
     sql: ${TABLE}."PAYMENT_VALUE" ;;
+    value_format: "$#.00;($#.00)"
   }
 
   measure: count {
