@@ -103,6 +103,12 @@ view: orders {
     drill_fields: [order_id, order_items.count, order_payments.count]
   }
 
+  measure: count_distinct {
+    label: "Count (Distinct)"
+    type: count_distinct
+    drill_fields: [order_id, order_items.count, order_payments.count]
+  }
+
   measure: count_percent_of_total {
     label: "Count (Percent of total)"
     type: percent_of_total
