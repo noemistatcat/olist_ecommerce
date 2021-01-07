@@ -28,11 +28,19 @@ view: order_facts {
   }
 
   measure: total_order_price {
-    label: "Total Price"
-    description: "Total order price"
+    label: "Total Order Value"
+    description: "Total Order Value"
     type: sum
-    sql: ${TABLE}.order_item_count ;;
-    value_format: "$#.00;($#.00)"
+    sql: ${TABLE}.price ;;
+    value_format: "$#.0;($#.0)"
+  }
+
+  measure: avg_order_value {
+    label: "Average Order Value"
+    description: "Average Order Value"
+    type: average
+    sql: ${TABLE}.price ;;
+    value_format: "$#.0;($#.0)"
   }
 
   measure: total_freight_value {
