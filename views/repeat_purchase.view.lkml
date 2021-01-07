@@ -77,4 +77,9 @@ view: repeat_purchase {
     value_format: "$#.00;($#.00)"
   }
 
+  measure: count_distinct_customer_id {
+    label: "Count (Distinct)"
+    type: count_distinct
+    sql: ${TABLE}.customer_id ;;
+    }
 }
