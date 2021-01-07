@@ -64,4 +64,25 @@ view: products {
     type: count
     drill_fields: [product_id, product_category_name, order_items.count]
   }
+
+  measure: avg_product_weight {
+    label: "Average Product Weight (g)"
+    description: "Average Product Weight (g)"
+    type: average
+    sql: ${TABLE}.product_weight_g ;;
+  }
+
+  measure: avg_product_length {
+    label: "Average Product Length (cm)"
+    description: "Average Product Length (cm)"
+    type: average
+    sql: ${TABLE}.product_name_length ;;
+  }
+
+  measure: avg_product_height {
+    label: "Average Product Height (cm)"
+    description: "Average Product Height (cm)"
+    type: average
+    sql: ${TABLE}.product_height_cm ;;
+  }
 }
