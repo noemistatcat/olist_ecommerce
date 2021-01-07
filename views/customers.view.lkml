@@ -44,7 +44,7 @@ view: customers {
   measure: count_distinct_customer_id {
     label: "Count (Distinct)"
     type: count_distinct
-    sql: ${customer_id} ;;
+    sql: ${customer_unique_id} ;;
     }
 
   measure: count_percent_of_total {
