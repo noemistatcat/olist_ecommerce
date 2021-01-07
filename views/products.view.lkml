@@ -70,6 +70,7 @@ view: products {
     description: "Average Product Weight (g)"
     type: average
     sql: ${TABLE}.product_weight_g ;;
+    value_format: "0.0"
   }
 
   measure: avg_product_length {
@@ -77,6 +78,7 @@ view: products {
     description: "Average Product Length (cm)"
     type: average
     sql: ${TABLE}.product_name_length ;;
+    value_format: "0.0"
   }
 
   measure: avg_product_height {
@@ -84,5 +86,6 @@ view: products {
     description: "Average Product Height (cm)"
     type: average
     sql: ${TABLE}.product_height_cm ;;
+    value_format: "0.0"
   }
 }
