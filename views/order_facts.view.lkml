@@ -25,6 +25,7 @@ view: order_facts {
     description: "Average number of items bought per transaction"
     type: average
     sql: ${TABLE}.order_item_count ;;
+    value_format: "0.0"
   }
 
   measure: total_order_price {
