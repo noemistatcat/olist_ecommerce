@@ -7,7 +7,7 @@ view: repeat_purchase {
     SUM(order_items.price) AS price
     FROM "DATASETS"."CUSTOMERS" AS customers
     LEFT JOIN "DATASETS"."ORDERS" AS orders
-        ON customers.customer_id = order_items.customer_id
+        ON customers.customer_id = orders.customer_id
     LEFT JOIN "DATASETS"."ORDER_ITEMS" AS order_items
         ON orders.order_id = order_items.order_id
     GROUP BY customer_unique_id;;
