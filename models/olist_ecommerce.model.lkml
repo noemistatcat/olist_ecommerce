@@ -85,3 +85,41 @@ explore: orders_products_sold {
   }
 
 }
+
+############ TEST Customers and Purchase Behaviors Explore 2 #############
+
+explore: customers_purchase_behaviors_2 {
+  label: "(3) Customers and Purchase Behaviors"
+  view_name: orders
+
+  join: order_items {
+    view_label: "Order Items"
+    relationship: one_to_many
+    sql_on: ${orders.order_id} = ${order_items.order_id} ;;
+  }
+
+  join: order_payments {
+    view_label: "Order Payments"
+    relationship: one_to_many
+    sql_on: ${orders.order_id} = ${order_payments.order_id} ;;
+  }
+
+  join: order_facts {
+    view_label: "Order Facts"
+    relationship: one_to_one
+    sql_on: ${orders.order_id} = ${order_facts.order_id} ;;
+  }
+
+  join: customers {
+    view_label: "Customers"
+    relationship: many_to_one
+    sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
+  }
+
+  join: repeat_purchase {
+    view_label: "Repeat Purchase"
+    relationship: one_to_one
+    sql_on: ${repeat_purchase.customer_unique_id} = ${customers.customer_unique_id} ;;
+  }
+
+}
