@@ -1,28 +1,24 @@
-include: "/views/orders.view"
-include: "/views/order_items.view"
-#include: "/models/olist_ecommerce.model.lkml"
-
 view: repeat_purchase {
   view_label: "Dimensions and Measures for repeat purchase behaviors"
   derived_table: {
     sql: SELECT
-    orders.customer_id,
+    customers.customer_unique_id,
     COUNT(*) AS lifetime_orders,
-    MIN(orders.order_purchase_timestamp) AS first_purchase_date,
-    MAX(orders.order_purchase_timestamp) AS last_purchase_date,
     SUM(order_items.price) AS price
-    FROM "DATASETS"."ORDERS" AS orders
+    FROM "DATASETS"."CUSTOMERS" AS customers
+    LEFT JOIN "DATASETS"."ORDERS" AS orders
+        ON customers.customer_id = order_items.customer_id
     LEFT JOIN "DATASETS"."ORDER_ITEMS" AS order_items
         ON orders.order_id = order_items.order_id
-    GROUP BY customer_id;;
+    GROUP BY customer_unique_id;;
 }
 
   # Define your dimensions and measures here, like this:
-  dimension: customer_id {
+  dimension: customer_unique_id {
     description: "Unique ID for each user that has ordered"
     primary_key: yes
     type: number
-    sql: ${TABLE}.customer_id ;;
+    sql: ${TABLE}.customer_unique_id ;;
   }
 
   dimension: lifetime_orders {
@@ -35,20 +31,6 @@ view: repeat_purchase {
     description: "Whether customer bought from the store only once or multiple times"
     type: yesno
     sql: ${TABLE}.lifetime_orders > 1 ;;
-  }
-
-  dimension_group: last_purchase_date {
-    description: "The date when each user last ordered"
-    type: time
-    timeframes: [date, week, month, year]
-    sql: ${TABLE}.last_purchase_date ;;
-  }
-
-  dimension_group: first_purchase_date {
-    description: "The date when each user first ordered"
-    type: time
-    timeframes: [date, week, month, year]
-    sql: ${TABLE}.first_purchase_date ;;
   }
 
   measure: total_lifetime_orders {
@@ -80,6 +62,6 @@ view: repeat_purchase {
   measure: count_distinct_customer_id {
     label: "Count (Distinct)"
     type: count_distinct
-    sql: ${TABLE}.customer_id ;;
+    sql: ${TABLE}.customer_unique_id ;;
     }
 }
