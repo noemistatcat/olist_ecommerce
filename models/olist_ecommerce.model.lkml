@@ -14,19 +14,7 @@ persist_with: olist_ecommerce_default_datagroup
 
 explore: customers_purchase_behaviors {
   label: "(1) Customers and Purchase Behaviors"
-  view_name: customers
-
-  join: repeat_purchase {
-    view_label: "Repeat Purchase"
-    relationship: one_to_one
-    sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
-  }
-
-  join: orders {
-    view_label: "Orders"
-    relationship: one_to_many
-    sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
-  }
+  view_name: orders
 
   join: order_items {
     view_label: "Order Items"
@@ -46,8 +34,18 @@ explore: customers_purchase_behaviors {
     sql_on: ${orders.order_id} = ${order_facts.order_id} ;;
   }
 
-}
+  join: customers {
+    view_label: "Customers"
+    relationship: many_to_one
+    sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
+  }
 
+  join: repeat_purchase {
+    view_label: "Repeat Purchase"
+    relationship: one_to_one
+    sql_on: ${repeat_purchase.customer_unique_id} = ${customers.customer_unique_id} ;;
+  }
+}
 ############ Orders and Products Sold Explore #############
 
 explore: orders_products_sold {
