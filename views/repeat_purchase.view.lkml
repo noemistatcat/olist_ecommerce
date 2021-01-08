@@ -43,6 +43,7 @@ view: repeat_purchase {
     description: "Use this for averaging lifetime orders across many users"
     type: average
     sql: ${lifetime_orders} ;;
+    value_format: "0.0"
     }
 
   measure: total_lifetime_value {
