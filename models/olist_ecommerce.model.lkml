@@ -17,7 +17,7 @@ explore: customers_purchase_behaviors {
   view_name: orders
 
   join: order_items {
-    view_label: "Order Items"
+    view_label: "Order Items123"
     relationship: one_to_many
     sql_on: ${orders.order_id} = ${order_items.order_id} ;;
   }
