@@ -18,7 +18,13 @@ view: customers {
   }
 
   dimension: customer_state {
-    description: "Customer state"
+    description: "Customer state TEST"
+    type: string
+    sql: ${TABLE}."CUSTOMER_STATE" ;;
+  }
+
+  dimension: customer_state_duo {
+    description: "Customer state TEST2"
     type: string
     sql: ${TABLE}."CUSTOMER_STATE" ;;
   }
