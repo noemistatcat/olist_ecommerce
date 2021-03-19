@@ -61,7 +61,7 @@ view: order_items {
   }
 
   measure: count {
-    label: "Count"
+    label: "Count123"
     type: count
     drill_fields: [order_item_id, products.product_category_name, products.product_id, orders.order_id]
   }
