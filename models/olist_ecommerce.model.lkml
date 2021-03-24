@@ -91,7 +91,7 @@ explore: customers_purchase_behaviors_2 {
   view_name: orders
 
   join: order_items {
-    view_label: "Order Items"
+    view_label: "Order ItemsTEST"
     relationship: one_to_many
     sql_on: ${orders.order_id} = ${order_items.order_id} ;;
   }
@@ -114,10 +114,10 @@ explore: customers_purchase_behaviors_2 {
     sql_on: ${customers.customer_id} = ${orders.customer_id} ;;
   }
 
-  join: repeat_purchase {
-    view_label: "Repeat Purchase"
-    relationship: one_to_one
-    sql_on: ${repeat_purchase.customer_unique_id} = ${customers.customer_unique_id} ;;
-  }
+  # join: repeat_purchase {
+  #   view_label: "Repeat Purchase"
+  #   relationship: one_to_one
+  #   sql_on: ${repeat_purchase.customer_unique_id} = ${customers.customer_unique_id} ;;
+  # }
 
 }
