@@ -27,11 +27,11 @@ view: repeat_purchase {
     sql: ${TABLE}.lifetime_orders ;;
   }
 
-  dimension: is_repeat_customer {
-    description: "Whether customer bought from the store only once or multiple times"
-    type: yesno
-    sql: ${TABLE}.lifetime_orders > 1 ;;
-  }
+  # dimension: is_repeat_customer {
+  #   description: "Whether customer bought from the store only once or multiple times"
+  #   type: yesno
+  #   sql: ${TABLE}.lifetime_orders > 1 ;;
+  # }
 
   measure: total_lifetime_orders {
     description: "Use this for counting lifetime orders across many users"
