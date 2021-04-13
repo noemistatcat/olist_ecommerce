@@ -89,6 +89,7 @@ explore: orders_products_sold {
 explore: customers_purchase_behaviors_2 {
   label: "(3) Customers and Purchase Behaviors"
   view_name: orders
+  hidden: yes
 
   join: order_items {
     view_label: "Order ItemsTEST"
