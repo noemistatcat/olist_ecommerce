@@ -4,6 +4,7 @@ view: orders {
   drill_fields: [order_id]
 
   dimension: order_id {
+    label: "Unique Order ID"
     description: "Unique identifier of the order"
     primary_key: yes
     type: string

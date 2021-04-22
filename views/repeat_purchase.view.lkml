@@ -27,11 +27,11 @@ view: repeat_purchase {
     sql: ${TABLE}.lifetime_orders ;;
   }
 
-  dimension: is_repeat_customer {
-    description: "Whether customer bought from the store only once or multiple times"
-    type: yesno
-    sql: ${TABLE}.lifetime_orders > 1 ;;
-  }
+  # dimension: is_repeat_customer {
+  #   description: "Whether customer bought from the store only once or multiple times"
+  #   type: yesno
+  #   sql: ${TABLE}.lifetime_orders > 1 ;;
+  # }
 
   measure: total_lifetime_orders {
     description: "Use this for counting lifetime orders across many users"
@@ -46,12 +46,12 @@ view: repeat_purchase {
     value_format: "0.0"
     }
 
-  measure: total_lifetime_value {
-    description: "Use this for counting lifetime orders across many users"
-    type: sum
-    sql: ${TABLE}.price ;;
-    value_format: "$#.00;($#.00)"
-  }
+  # measure: total_lifetime_value {
+  #   description: "Use this for counting lifetime orders across many users"
+  #   type: sum
+  #   sql: ${TABLE}.price ;;
+  #   value_format: "$#.00;($#.00)"
+  # }
 
   measure: avg_lifetime_value {
     description: "Use this for averaging lifetime orders across many users"
