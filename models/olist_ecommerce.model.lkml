@@ -15,6 +15,7 @@ persist_with: olist_ecommerce_default_datagroup
 explore: customers_purchase_behaviors {
   label: "(1) Customers and Purchase Behaviors"
   view_name: orders
+  sql_table_name: "DATASETS"."ORDERS2";;
 
   join: order_items {
     view_label: "Order Items123"
